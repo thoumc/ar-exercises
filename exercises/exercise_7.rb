@@ -11,8 +11,14 @@ puts "----------"
 
 puts "Let's create a store!"
 input = gets.chomp
-@something = Store.create(name: input)
+@something = Store.create(
+  name: input,
+  annual_revenue: 45000,
+  mens_apparel: false,
+  womens_apparel: false
+)
 
 puts @something.errors[:name]
 puts @something.errors[:annual_revenue]
+puts @something.errors[:womens_apparel]
 # Your code goes here ...

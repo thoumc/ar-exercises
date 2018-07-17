@@ -3,9 +3,12 @@ class Store < ActiveRecord::Base
 
   validates :annual_revenue, presence: true, numericality: {greater_than_or_equal_to: 0 }
   validates :name, presence: true, length: { minimum: 3 }
+  validate :has_department?
+
+  def has_department?
+    if mens_apparel == false && womens_apparel == false
+      errors.add(:womens_apparel, "Needs a department")
+    end
+  end
+
 end
-
-# class Departments < ActiveRecord::Base
-#   validate :mens_apparel, :womens_apparel
-
-# end
