@@ -5,7 +5,7 @@ puts "Exercise 2"
 puts "----------"
 
 @store1 = Store.find_by(id: 1)
-@store1.update(name: 'Changed')
+@store1.update(name: 'newBurnaby')
 @store1.save
 @store2 = Store.find_by(id: 2)
 
