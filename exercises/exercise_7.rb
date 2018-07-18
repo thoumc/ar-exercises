@@ -13,7 +13,7 @@ puts "Let's create a store!"
 input = gets.chomp
 @something = Store.create(
   name: input,
-  annual_revenue: 45000,
+  annual_revenue: 0,
   mens_apparel: false,
   womens_apparel: false
 )

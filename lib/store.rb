@@ -5,11 +5,21 @@ class Store < ActiveRecord::Base
   validates :name, presence: true, length: { minimum: 3 }
   validate :has_department?
 
-  def has_department?
-    if mens_apparel == false && womens_apparel == false
-      errors.add(:womens_apparel, "Needs women department")
-      errors.add(:mens_apparel, "Needs men department")
+  before_destroy :destroyable?
+
+  private
+    def has_department?
+      if mens_apparel == false && womens_apparel == false
+        errors.add(:womens_apparel, "Needs women department")
+        errors.add(:mens_apparel, "Needs men department")
+      end
     end
-  end
+
+    def destroyable?
+      if self.employees.size > 0
+        throw :abort
+      end
+    end
+
 
 end
